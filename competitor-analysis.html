@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Agency Competitor Analysis — Phase 3 Ecom</title>
+  <meta name="description" content="Internal research: 30 Australian Amazon agency competitor sites analysed. Messaging gaps, copy patterns, Phase 3 Ecom differentiation strategy.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Report-specific styles */
+    .report-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 0;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+      padding: 32px 24px 32px 0;
+      border-right: 1px solid var(--border);
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .toc-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .toc-list li a {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 5px 8px;
+      border-radius: 5px;
+      line-height: 1.4;
+      transition: all 0.15s;
+    }
+
+    .toc-list li a:hover,
+    .toc-list li a.active {
+      color: var(--text-primary);
+      background: var(--bg-card);
+    }
+
+    .toc-list .toc-part {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      padding: 5px 8px;
+      margin-top: 12px;
+    }
+
+    .report-content {
+      padding: 40px 0 80px 40px;
+    }
+
+    .report-section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .report-section:last-child { border-bottom: none; }
+
+    .part-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .insight-box {
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+
+    .insight-box strong { color: var(--accent-light); }
+
+    .avoid-box {
+      background: rgba(239,68,68,0.06);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-left: 3px solid var(--red);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+
+    .good-box {
+      background: rgba(16,185,129,0.06);
+      border: 1px solid rgba(16,185,129,0.2);
+      border-left: 3px solid var(--green);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+
+    .formula-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin: 12px 0;
+    }
+
+    .formula-block .formula-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .formula-block .formula-title.avoid { color: var(--red); }
+    .formula-block .formula-title.ok { color: #F59E0B; }
+    .formula-block .formula-title.good { color: var(--green); }
+
+    .formula-block ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .formula-block li {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .formula-block li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    .badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+
+    .phrase-avoid {
+      display: inline-block;
+      font-size: 0.78rem;
+      background: rgba(239,68,68,0.08);
+      border: 1px solid rgba(239,68,68,0.2);
+      color: #FCA5A5;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin: 3px;
+      text-decoration: line-through;
+      text-decoration-color: rgba(239,68,68,0.4);
+    }
+
+    .phrase-use {
+      display: inline-block;
+      font-size: 0.78rem;
+      background: rgba(16,185,129,0.08);
+      border: 1px solid rgba(16,185,129,0.2);
+      color: #6EE7B7;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin: 3px;
+    }
+
+    .gap-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin: 12px 0;
+      display: flex;
+      gap: 16px;
+    }
+
+    .gap-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent-dim);
+      color: rgba(124,58,237,0.25);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 32px;
+      letter-spacing: -0.05em;
+    }
+
+    .appendix-table { font-size: 0.8rem; }
+    .appendix-table td { padding: 10px 12px; }
+    .appendix-table th { padding: 10px 12px; }
+
+    blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 4px 0 4px 16px;
+      margin: 8px 0;
+      font-style: italic;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .meta-bar {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+
+    .meta-bar span { display: flex; align-items: center; gap: 6px; }
+
+    @media (max-width: 900px) {
+      .report-layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .report-content { padding: 32px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Phase 3 <span>Ecom</span></div>
+    <div class="nav-links">
+      <a href="index.html">Amazon Overview</a>
+      <a href="account-setup.html">Account Setup</a>
+      <a href="listing-optimisation.html">Listings</a>
+      <a href="amazon-advertising.html">Advertising</a>
+      <a href="aplus-content.html">A+ Content</a>
+      <a href="fba-management.html">FBA</a>
+      <a href="marketplace-expansion.html">Expansion</a>
+      <a href="https://phase3ecom.com" class="nav-cta">Apply →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div style="background: var(--bg-secondary); border-bottom: 1px solid var(--border); padding: 32px 24px;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div class="breadcrumb" style="margin-bottom: 12px;">
+      <a href="index.html">Amazon Services</a>
+      <span>/</span>
+      <span>Competitor Analysis</span>
+    </div>
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div>
+        <div class="hero-label" style="margin-bottom: 12px;">Internal Research Document</div>
+        <h1 style="font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: 8px;">Amazon Agency Competitor Analysis</h1>
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 560px;">Messaging gaps, copy patterns, and Phase 3 Ecom differentiation strategy derived from 30 Australian Amazon agency sites.</p>
+      </div>
+    </div>
+    <div class="meta-bar">
+      <span>📅 Compiled: 14/05/2026</span>
+      <span>🔍 Sites analysed: 30 of 31</span>
+      <span>⚠ AmazonMate.com.au: unreachable</span>
+      <span>🎯 Purpose: Amazon service page content research</span>
+    </div>
+  </div>
+</div>
+
+<!-- REPORT BODY -->
+<div class="report-layout">
+
+  <!-- TOC -->
+  <aside class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+      <li class="toc-part">Part 1 — Market</li>
+      <li><a href="#table-stakes">Table stakes services</a></li>
+      <li><a href="#differentiators">Differentiating services</a></li>
+      <li><a href="#audience">Audience segmentation</a></li>
+
+      <li class="toc-part">Part 2 — Messaging</li>
+      <li><a href="#headlines">Hero headline patterns</a></li>
+      <li><a href="#value-props">Value proposition patterns</a></li>
+      <li><a href="#phrases-adapt">Phrases worth adapting</a></li>
+      <li><a href="#phrases-avoid">Phrases to avoid</a></li>
+
+      <li class="toc-part">Part 3 — Proof</li>
+      <li><a href="#social-proof">Social proof types</a></li>
+      <li><a href="#certifications">Certifications used</a></li>
+
+      <li class="toc-part">Part 4 — Visual/UX</li>
+      <li><a href="#page-sections">Common page sections</a></li>
+      <li><a href="#process-frameworks">Process frameworks</a></li>
+
+      <li class="toc-part">Part 5 — Gaps</li>
+      <li><a href="#nobody-saying">What no-one is saying</a></li>
+      <li><a href="#p3-strengths">Phase 3 Ecom strengths</a></li>
+
+      <li class="toc-part">Part 6 — Recommendations</li>
+      <li><a href="#rec-hero">Hero section</a></li>
+      <li><a href="#rec-services">Services to describe</a></li>
+      <li><a href="#rec-process">Process section</a></li>
+      <li><a href="#rec-proof">Social proof</a></li>
+      <li><a href="#rec-pods">Points of difference</a></li>
+      <li><a href="#rec-cta">CTA patterns</a></li>
+      <li><a href="#rec-faq">FAQ topics</a></li>
+
+      <li class="toc-part">Appendix</li>
+      <li><a href="#site-by-site">Site-by-site reference</a></li>
+    </ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="report-content">
+
+    <!-- PART 1 -->
+    <div class="report-section" id="table-stakes">
+      <div class="part-label">Part 1 — Market Landscape</div>
+      <h2 class="section-title">Services that are table stakes</h2>
+      <p style="margin-bottom: 16px;">Every competitor has these. Not mentioning them makes you look incomplete. Leading with them means nothing.</p>
+      <div class="badge-grid">
+        <span class="badge">Amazon PPC (Sponsored Products, Brands, Display)</span>
+        <span class="badge">Listing optimisation</span>
+        <span class="badge">A+ Content / EBC</span>
+        <span class="badge">Account management</span>
+        <span class="badge">Brand Registry</span>
+        <span class="badge">Keyword research</span>
+      </div>
+    </div>
+
+    <div class="report-section" id="differentiators">
+      <h2 class="section-title">Services that differentiate</h2>
+      <p style="margin-bottom: 20px;">These separate full-service agencies from ads-only shops — not universal across the market.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Service</th><th>Who offers it</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Amazon DSP</strong></td><td>RocketAMS, SalesDuo, AMZDudes, Merge</td><td>Programmatic — enterprise play</td></tr>
+            <tr><td><strong>FBA / fulfilment consulting</strong></td><td>Simple Sellers, eStore Factory, AmazonMate</td><td>Operational, not just marketing</td></tr>
+            <tr><td><strong>Vendor Central / 1P</strong></td><td>RocketAMS, SalesDuo, Unmaze</td><td>Large brand focus</td></tr>
+            <tr><td><strong>International expansion</strong></td><td>Simple Sellers, LION, Choose Digital, Export Accelerator</td><td>US, UK, EU, UAE, Japan</td></tr>
+            <tr><td><strong>Product photography/video</strong></td><td>eStore Factory, Giant Horizons, Innovex, Creative Circuit</td><td>Creative asset production</td></tr>
+            <tr><td><strong>Account reinstatement</strong></td><td>Krolog, Innovex, Project E</td><td>Suspension recovery</td></tr>
+            <tr><td><strong>Amazon Marketing Cloud (AMC)</strong></td><td>AMZDudes</td><td>Full-funnel analytics — rare</td></tr>
+            <tr><td><strong>AI-powered BI dashboards</strong></td><td>SalesDuo ("Ethan"), LION ("LION VIEW")</td><td>Proprietary tech angle</td></tr>
+            <tr><td><strong>Training / consulting programs</strong></td><td>Giant Horizons, Unmaze, RocketAMS</td><td>Coaching model</td></tr>
+            <tr><td><strong>Marketplace expansion</strong></td><td>20twenty, Krolog, AMZDudes</td><td>eBay, Walmart, TikTok Shop</td></tr>
+            <tr><td><strong>Shopify + Amazon integration</strong></td><td>eStore Factory, Krolog, <strong>Phase 3 Ecom</strong></td><td>Cross-channel — Phase 3 Ecom's lane</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="report-section" id="audience">
+      <h2 class="section-title">Target audience segmentation</h2>
+      <div class="table-wrap" style="margin-bottom: 20px;">
+        <table>
+          <thead>
+            <tr><th>Segment</th><th>Who targets them</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Enterprise / $30M+</td><td>RocketAMS</td></tr>
+            <tr><td>Mid-market brands</td><td>SalesDuo, LION, Sequence Commerce</td></tr>
+            <tr><td><strong>SMBs / $10K–$100K/month</strong></td><td><strong>Phase 3 Ecom's lane — underserved by most</strong></td></tr>
+            <tr><td>FBA private label sellers</td><td>Giant Horizons, AMZDudes, Simple Sellers</td></tr>
+            <tr><td>New to Amazon</td><td>Simple Sellers, eStore Factory, Creative Circuit, Export Accelerator</td></tr>
+            <tr><td>Brands going international</td><td>Export Accelerator, Choose Digital, Simple Sellers</td></tr>
+            <tr><td>Non-retail brands (using Amazon Ads)</td><td>Deep Media</td></tr>
+            <tr><td>Chinese-Australian market</td><td>Digital Crew</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight-box">
+        <strong>Phase 3 Ecom's gap to own:</strong> The $10K–$100K/month ecom store owner who needs Amazon as a growth channel <em>alongside</em> Shopify, email, and paid — not as a standalone marketplace strategy. No competitor owns this integrated positioning.
+      </div>
+    </div>
+
+    <!-- PART 2 -->
+    <div class="report-section" id="headlines">
+      <div class="part-label">Part 2 — Messaging Analysis</div>
+      <h2 class="section-title">Hero headline patterns</h2>
+
+      <div class="formula-block">
+        <div class="formula-title avoid">❌ Formula 1 — Outcome promise (most common, most generic)</div>
+        <ul>
+          <li>"Drive Sales on the World's Largest Marketplace" — Merge</li>
+          <li>"Become a Power Seller on Amazon" — First Page</li>
+          <li>"Unlock Unstoppable Amazon Growth" — Export Accelerator</li>
+          <li>"Maximising Product Visibility and Profits" — Krolog</li>
+        </ul>
+        <p style="margin-top: 10px; font-size: 0.82rem; color: var(--red);">Saturated language. Every agency says this. Avoid.</p>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-title ok">⚠ Formula 2 — Positioning/identity (more differentiated)</div>
+        <ul>
+          <li>"The Only Amazon Agency You Will Ever Need" — SalesDuo</li>
+          <li>"eCommerce Management Agency" — RocketAMS</li>
+          <li>"Full Service Agency Specialising in Amazon" — Unmaze</li>
+        </ul>
+        <p style="margin-top: 10px; font-size: 0.82rem; color: #F59E0B;">Category-defining, not brand-defining. Okay but not distinctive enough.</p>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-title good">✅ Formula 3 — Problem-led (strongest for conversion)</div>
+        <ul>
+          <li>"Your products are awesome, but not selling fast?" — Krolog</li>
+          <li>"Shoppers are searching. Your products should be the answer." — Impressive</li>
+          <li>"Commerce moves fast, Sequence moves faster." — Sequence</li>
+        </ul>
+        <p style="margin-top: 10px; font-size: 0.82rem; color: var(--green);">Leads with the buyer's problem or context. Most effective for conversion.</p>
+      </div>
+
+      <div class="formula-block">
+        <div class="formula-title ok">⚠ Formula 4 — Credibility-first</div>
+        <ul>
+          <li>"Founded by ex-Amazon AU employees" — RocketAMS, Simple Sellers, Unmaze, SalesDuo</li>
+        </ul>
+        <p style="margin-top: 10px; font-size: 0.82rem; color: #F59E0B;">Only compelling if the claim is real and specific. Don't use if it's not true.</p>
+      </div>
+
+      <div class="good-box" style="margin-top: 20px;">
+        <strong>Phase 3 Ecom Amazon page direction:</strong><br>
+        Lead with the integrated angle — Amazon as a growth channel that works harder when it's connected to the rest of the business. Frame: <em>"Your Amazon channel, built to work with your whole business."</em>
+      </div>
+    </div>
+
+    <div class="report-section" id="value-props">
+      <h2 class="section-title">Value proposition patterns</h2>
+
+      <div class="avoid-box">
+        <strong>What almost everyone says — avoid these:</strong>
+        <div style="margin-top: 10px;">
+          <span class="phrase-avoid">Data-driven approach</span>
+          <span class="phrase-avoid">Tailored strategies</span>
+          <span class="phrase-avoid">Measurable results</span>
+          <span class="phrase-avoid">Transparent reporting</span>
+          <span class="phrase-avoid">Partner, not just an agency</span>
+          <span class="phrase-avoid">End-to-end solutions</span>
+          <span class="phrase-avoid">We take ownership</span>
+        </div>
+      </div>
+
+      <h3 style="margin: 24px 0 12px; font-size: 1.1rem;">What fewer people say well — worth adapting</h3>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div class="good-box" style="margin: 0;">
+          <strong>SalesDuo:</strong> <em>"Most agencies manage your account. SalesDuo scales your business."</em> — Great contrast framing
+        </div>
+        <div class="good-box" style="margin: 0;">
+          <strong>Impressive:</strong> <em>"Google and Meta generate awareness. Amazon closes the sale."</em> — Great platform positioning
+        </div>
+        <div class="good-box" style="margin: 0;">
+          <strong>Australian Digital:</strong> <em>"The person who pitches and the person delivering the work are the same person."</em> — Accountability angle
+        </div>
+        <div class="good-box" style="margin: 0;">
+          <strong>Unmaze:</strong> <em>"No empty promises or BS; we walk the walk."</em> — Refreshing directness
+        </div>
+        <div class="insight-box" style="margin: 0;">
+          <strong>Phase 3 Ecom existing (keep):</strong> <em>"You don't need more advice. You need execution."</em> — This is strong.
+        </div>
+      </div>
+
+      <div class="insight-box" style="margin-top: 20px;">
+        <strong>Integrated positioning — no competitor owns this:</strong> Phase 3 Ecom is the only agency in this space positioning Amazon as one channel in a connected ecom system alongside Shopify, email automation, Meta, and Google. All 30 competitors are Amazon-first or Amazon-only. Phase 3 Ecom is ecom-first.
+      </div>
+    </div>
+
+    <div class="report-section" id="phrases-adapt">
+      <h2 class="section-title">Key phrases worth adapting</h2>
+      <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.9rem;">From competitors — worth reworking in Phase 3 Ecom voice:</p>
+      <div>
+        <span class="phrase-use">Amazon is where purchase intent peaks — Impressive</span>
+        <span class="phrase-use">Highest-intent traffic in digital advertising — Merge</span>
+        <span class="phrase-use">Built-in trust (Amazon's buyer confidence) — Choose Digital</span>
+        <span class="phrase-use">Buy Box algorithm / Buy Box share — credibility marker</span>
+        <span class="phrase-use">TACoS not just ACoS — the full picture — Merge, SalesDuo</span>
+        <span class="phrase-use">Listing that ranks and converts — implied across market</span>
+        <span class="phrase-use">First-page rankings, not just impressions — Giant Horizons</span>
+        <span class="phrase-use">If you're not on Page 1, you're not getting seen — Giant Horizons</span>
+      </div>
+
+      <h3 style="margin: 24px 0 12px; font-size: 1.05rem;">Phase 3 Ecom existing — keep all of these</h3>
+      <div>
+        <span class="phrase-use">Not taught. Executed.</span>
+        <span class="phrase-use">You shouldn't trust promises. You should trust systems.</span>
+        <span class="phrase-use">One system. Everything connected.</span>
+        <span class="phrase-use">We're here to build with you.</span>
+      </div>
+    </div>
+
+    <div class="report-section" id="phrases-avoid">
+      <h2 class="section-title">Phrases to avoid — overused across market</h2>
+      <div style="margin-top: 8px;">
+        <span class="phrase-avoid">Skyrocket your sales</span>
+        <span class="phrase-avoid">Unlock your brand's full potential</span>
+        <span class="phrase-avoid">Power seller</span>
+        <span class="phrase-avoid">Cutting-edge techniques</span>
+        <span class="phrase-avoid">Game changer</span>
+        <span class="phrase-avoid">Deep dive</span>
+        <span class="phrase-avoid">Seamless experience</span>
+        <span class="phrase-avoid">On your side</span>
+        <span class="phrase-avoid">Holistic approach</span>
+        <span class="phrase-avoid">Future-proof</span>
+        <span class="phrase-avoid">Effortlessly</span>
+        <span class="phrase-avoid">World-class</span>
+        <span class="phrase-avoid">Best Amazon agency in Australia</span>
+      </div>
+    </div>
+
+    <!-- PART 3 -->
+    <div class="report-section" id="social-proof">
+      <div class="part-label">Part 3 — Proof & Credibility</div>
+      <h2 class="section-title">How competitors use social proof</h2>
+      <p style="margin-bottom: 20px;">Metric types used, ranked most to least common across 30 sites:</p>
+
+      <div class="table-wrap" style="margin-bottom: 24px;">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Proof type</th><th>Examples</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Percentage sales/revenue increases</td><td>736%, 280%, 120%, 55%</td></tr>
+            <tr><td>2</td><td>Client count</td><td>500+, 300+, 5000+ accounts</td></tr>
+            <tr><td>3</td><td>Revenue managed</td><td>$250M, $3B, $100M ad spend</td></tr>
+            <tr><td>4</td><td>YoY growth figures</td><td>—</td></tr>
+            <tr><td>5</td><td>Named case studies with business names</td><td>—</td></tr>
+            <tr><td>6</td><td>Average client results</td><td>avg. 120% sales increase — Simple Sellers</td></tr>
+            <tr><td>7</td><td>Star ratings + review counts</td><td>4.8 stars, 130+ reviews — Impressive</td></tr>
+            <tr><td>8</td><td>Award/certification badges</td><td>Amazon SPN, SPN Award Winner, Amazon Advanced Partner</td></tr>
+            <tr><td>9</td><td>Time metrics</td><td>Results within 30 days — RocketAMS, Nimbull</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size: 1.05rem; margin-bottom: 12px;">Standout approaches</h3>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div class="good-box" style="margin: 0;">
+          <strong>RocketAMS:</strong> Named clients (Nutra Organics, Love to Dream) + CEO quotes + specific metrics (736% YoY in 5 months) — very credible
+        </div>
+        <div class="good-box" style="margin: 0;">
+          <strong>SalesDuo:</strong> 14+ detailed case studies + NPS score (9.1) + revenue managed ($3B) — enterprise-grade
+        </div>
+        <div class="insight-box" style="margin: 0;">
+          <strong>Phase 3 Ecom existing (keep):</strong> Named clients + ROI format ($1→$24.58 ROI) — this format is more compelling than percentage claims. Carry it to Amazon pages.
+        </div>
+      </div>
+
+      <div class="avoid-box" style="margin-top: 20px;">
+        <strong>What Phase 3 Ecom lacks for Amazon specifically (build this out):</strong>
+        <ul class="check-list x-list" style="margin-top: 8px; gap: 6px;">
+          <li>Amazon-specific case studies with named clients</li>
+          <li>Amazon-specific metrics (ACoS, ROAS, ranking improvements)</li>
+          <li>Amazon certification badges (SPN — apply now)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="report-section" id="certifications">
+      <h2 class="section-title">Certification signals used</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Certification</th><th>Who uses it</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Amazon Ads Verified/Advanced Partner</td><td>Unmaze, Deep Media, AMZDudes, Konversa</td></tr>
+            <tr><td><strong>Amazon SPN Certified</strong></td><td>Machete, eStore Factory, Krolog, Innovex — <strong>Phase 3 Ecom should apply</strong></td></tr>
+            <tr><td>Amazon SPN Award Winner</td><td>eStore Factory</td></tr>
+            <tr><td>Amazon Marketing Partner</td><td>Choose Digital, 20twenty</td></tr>
+            <tr><td>Google Premier Partner</td><td>RocketAMS (used as overall credibility signal)</td></tr>
+            <tr><td>B Corp</td><td>Impressive — standout differentiator</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PART 4 -->
+    <div class="report-section" id="page-sections">
+      <div class="part-label">Part 4 — Visual / UX Patterns</div>
+      <h2 class="section-title">Page sections on almost every competitor site</h2>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        {['Hero with headline + CTA + (optional: video/image)',
+          'Client logo carousel / trust strip',
+          'Services grid (icon + title + short description)',
+          'Process/how-it-works flow (3–5 steps)',
+          'Metrics/results bar (key numbers)',
+          'Case studies / testimonials',
+          'Certification badges',
+          'Team section or "why us" section',
+          'FAQ section',
+          'CTA section / contact form'].map((item, i) => `
+        <div style="display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border);">
+          <span style="font-size: 0.72rem; font-weight: 700; color: var(--accent-light); background: var(--accent-dim); border: 1px solid var(--accent-border); width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">${i+1}</span>
+          <span style="font-size: 0.88rem; color: var(--text-secondary);">${item}</span>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="report-section" id="process-frameworks">
+      <h2 class="section-title">Process frameworks</h2>
+      <p style="margin-bottom: 16px; color: var(--text-muted); font-size: 0.9rem;">Most agencies show a 3–5 step process. Common patterns across market:</p>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+        <div class="card" style="padding: 14px 18px;"><strong style="font-size: 0.88rem;">Audit → Strategy → Implement → Optimise</strong> <span style="font-size: 0.8rem; color: var(--text-muted;">— most common</span></div>
+        <div class="card" style="padding: 14px 18px;"><strong style="font-size: 0.88rem;">Discover → Focus → Recommend → Deliver</strong> <span style="font-size: 0.8rem; color: var(--text-muted);">— 20twenty</span></div>
+        <div class="card" style="padding: 14px 18px;"><strong style="font-size: 0.88rem;">12-Month Plan → Visibility → Hands-Off Engine → Protection</strong> <span style="font-size: 0.8rem; color: var(--text-muted);">— SalesDuo</span></div>
+      </div>
+      <div class="insight-box">
+        <strong>Phase 3 Ecom: Run → Drive → Fly</strong> is already distinctive. The 3-phase framing maps cleanly to Amazon context (Launch → Grow → Compound). Adapt it — don't replace it.
+      </div>
+      <h3 style="font-size: 1rem; margin: 20px 0 10px;">Visual elements worth noting</h3>
+      <ul class="check-list">
+        <li>Comparison tables (us vs. typical agency) — SalesDuo uses this well</li>
+        <li>Platform logos strip — Phase 3 Ecom already does this</li>
+        <li>Before/after metrics — most compelling social proof visual</li>
+        <li>Dashboard screenshots — SalesDuo, LION show proprietary tools</li>
+        <li>Founder/team photos — Australian Digital, Giant Horizons, Phase 3 Ecom (existing) — builds trust</li>
+      </ul>
+    </div>
+
+    <!-- PART 5 -->
+    <div class="report-section" id="nobody-saying">
+      <div class="part-label">Part 5 — Competitive Gaps</div>
+      <h2 class="section-title">What no competitor is saying — own these</h2>
+
+      <div class="gap-card">
+        <div class="gap-number">1</div>
+        <div>
+          <h3 style="font-size: 1rem; margin-bottom: 6px;">Amazon as part of your revenue ecosystem</h3>
+          <p style="font-size: 0.88rem;">Every competitor treats Amazon in isolation. Phase 3 Ecom can say: <em>"Your Amazon store only works as hard as the ecosystem behind it. We connect it to your Shopify, your email flows, your ad strategy — so every channel feeds the next."</em></p>
+        </div>
+      </div>
+
+      <div class="gap-card">
+        <div class="gap-number">2</div>
+        <div>
+          <h3 style="font-size: 1rem; margin-bottom: 6px;">The $10K–$100K/month founder who's been burned by specialists</h3>
+          <p style="font-size: 0.88rem;">Most agencies target either new sellers or enterprise brands. The mid-market ecom owner — doing real revenue but stuck — is underserved. Phase 3 Ecom already speaks this language on the main site.</p>
+        </div>
+      </div>
+
+      <div class="gap-card">
+        <div class="gap-number">3</div>
+        <div>
+          <h3 style="font-size: 1rem; margin-bottom: 6px;">Execution vs. advice framing applied to Amazon</h3>
+          <p style="font-size: 0.88rem;"><em>"You've probably read every Amazon guide. You know what FBA is. You know A+ content matters. What you need is someone to do it — and connect it to everything else you're building."</em></p>
+        </div>
+      </div>
+
+      <div class="gap-card">
+        <div class="gap-number">4</div>
+        <div>
+          <h3 style="font-size: 1rem; margin-bottom: 6px;">Brisbane-based — specific geographic pride</h3>
+          <p style="font-size: 0.88rem;">Most AU-wide agencies don't claim a home. Being Brisbane-based and proud of it is a differentiator, especially for QLD clients.</p>
+        </div>
+      </div>
+
+      <div class="gap-card">
+        <div class="gap-number">5</div>
+        <div>
+          <h3 style="font-size: 1rem; margin-bottom: 6px;">No lock-in + guarantee</h3>
+          <p style="font-size: 0.88rem;">Project E and RocketAMS do this. Phase 3 Ecom should match or beat: month-to-month, execution guaranteed.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-section" id="p3-strengths">
+      <h2 class="section-title">What Phase 3 Ecom already has that competitors don't</h2>
+      <ul class="check-list">
+        <li>Broader ecom system (Shopify + Email + Ads + Amazon = one connected strategy)</li>
+        <li>The TX Sales Method / Run-Drive-Fly framework</li>
+        <li>Named client results with ROI framing ($1→$X.XX)</li>
+        <li>Clear target audience ($10K–$100K/month)</li>
+        <li>"Not taught. Executed." positioning</li>
+        <li>Explicit guarantee language ("We guarantee execution")</li>
+      </ul>
+    </div>
+
+    <!-- PART 6 -->
+    <div class="report-section" id="rec-hero">
+      <div class="part-label">Part 6 — Content Recommendations</div>
+      <h2 class="section-title">Hero section</h2>
+      <p style="margin-bottom: 16px; color: var(--text-muted);">Frame Amazon as a growth channel that works harder when it's connected to the rest of the business.</p>
+      <h3 style="font-size: 1rem; margin-bottom: 10px;">Headline options</h3>
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+        <blockquote>"Your Amazon channel, built to work with everything else."</blockquote>
+        <blockquote>"Amazon isn't separate from your ecom strategy. It should drive it."</blockquote>
+        <blockquote>"Most brands treat Amazon like a side channel. We treat it like a revenue engine."</blockquote>
+        <blockquote>"You're already doing the work. Your Amazon channel should be doing it too."</blockquote>
+      </div>
+      <h3 style="font-size: 1rem; margin-bottom: 10px;">Subheadline direction</h3>
+      <blockquote>"We set up, manage and optimise your Amazon presence as part of your full ecom system — not as an afterthought."</blockquote>
+      <blockquote>"Listing optimisation, ad management, and A+ content — executed and connected to your Shopify, email, and paid strategy."</blockquote>
+    </div>
+
+    <div class="report-section" id="rec-services">
+      <h2 class="section-title">Services to describe</h2>
+      <div class="two-col" style="gap: 24px;">
+        <div>
+          <h3 style="font-size: 1rem; margin-bottom: 10px; color: var(--text-muted);">Core (must have)</h3>
+          <ul class="check-list">
+            <li>Amazon Account Setup & Management</li>
+            <li>Product Listing Optimisation</li>
+            <li>A+ Content & Brand Storefront</li>
+            <li>Amazon Advertising</li>
+            <li>Keyword Research & Ranking</li>
+            <li>Performance Reporting</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1rem; margin-bottom: 10px; color: var(--accent-light);">Differentiators (Phase 3 Ecom specific)</h3>
+          <ul class="check-list">
+            <li>Amazon × Shopify Integration</li>
+            <li>Amazon × Email Automation (external traffic to listings)</li>
+            <li>Amazon × Meta/Google (full-funnel awareness → Amazon close)</li>
+            <li>Marketplace Expansion (eBay, Bunnings, TheIconic)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-section" id="rec-process">
+      <h2 class="section-title">Process section — adapt Run-Drive-Fly</h2>
+      <div class="phase-grid">
+        <div class="phase-card">
+          <div class="phase-tag">Phase 1 — Foundation (Run)</div>
+          <p style="font-size: 0.88rem;">Account health check, listings built to rank and convert, FBA/fulfilment set up correctly, Brand Registry established.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-tag">Phase 2 — Growth (Drive)</div>
+          <p style="font-size: 0.88rem;">Amazon Ads launched and optimised, A+ content live, external traffic from Meta/Google driving to listings, keyword rankings improving.</p>
+        </div>
+        <div class="phase-card">
+          <div class="phase-tag">Phase 3 — Scale (Fly)</div>
+          <p style="font-size: 0.88rem;">Expanding to additional marketplaces, DSP/retargeting layer, international expansion, review generation, connected to the full ecom revenue system.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-section" id="rec-proof">
+      <h2 class="section-title">Social proof</h2>
+      <ul class="check-list">
+        <li>Use the ROI format ($1 → $X.XX) — more visceral than % claims</li>
+        <li>Name the business and the outcome: <em>"[Client] went from [before] to [after] in [timeframe]."</em></li>
+        <li>Add Amazon-specific metrics once clients are on platform: ACoS%, ranking improvements, organic sales %</li>
+      </ul>
+    </div>
+
+    <div class="report-section" id="rec-pods">
+      <h2 class="section-title">Points of difference</h2>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div class="insight-box" style="margin: 0;"><strong>1.</strong> Amazon + everything else, connected — not a standalone service</div>
+        <div class="insight-box" style="margin: 0;"><strong>2.</strong> Execution, not advice — we do the work, you see the results</div>
+        <div class="insight-box" style="margin: 0;"><strong>3.</strong> One team, one strategy — your Amazon manager talks to your email strategist and your ads buyer</div>
+        <div class="insight-box" style="margin: 0;"><strong>4.</strong> $10K–$100K/month specialists — we don't take clients we can't move</div>
+        <div class="insight-box" style="margin: 0;"><strong>5.</strong> Month-to-month, no lock-in — we keep clients by delivering, not by contract</div>
+        <div class="insight-box" style="margin: 0;"><strong>6.</strong> Brisbane-based, AU-market experts — GST, AU compliance, AU consumer behaviour</div>
+      </div>
+    </div>
+
+    <div class="report-section" id="rec-cta">
+      <h2 class="section-title">CTA patterns</h2>
+      <div class="good-box"><strong>Primary — keep existing:</strong> "Book a Call" ✅</div>
+      <h3 style="font-size: 0.95rem; margin: 16px 0 8px;">Secondary options worth testing</h3>
+      <ul class="check-list">
+        <li>"Get a Free Amazon Audit" — Project E, SalesDuo, Impressive all use audit offers</li>
+        <li>"See Our Amazon Results" — anchors to case studies</li>
+        <li>"Start with a Strategy Session" — consistent with TX Method framing</li>
+      </ul>
+      <div class="avoid-box" style="margin-top: 16px;"><strong>Avoid:</strong> "Get a Free Quote" — cheapens the service. Phase 3 Ecom sells strategy + execution, not a commodity.</div>
+    </div>
+
+    <div class="report-section" id="rec-faq">
+      <h2 class="section-title">FAQ topics</h2>
+      <ul class="check-list">
+        <li>Do I need to already be on Amazon to work with you?</li>
+        <li>How does Amazon fit with my Shopify store?</li>
+        <li>What's the difference between FBA and FBM — which do you recommend?</li>
+        <li>How long before I see results on Amazon?</li>
+        <li>What does Amazon management cost?</li>
+        <li>Do you handle compliance, Brand Registry, and account health?</li>
+        <li>Can you manage Amazon alongside my other marketing?</li>
+      </ul>
+    </div>
+
+    <!-- APPENDIX -->
+    <div class="report-section" id="site-by-site">
+      <div class="part-label">Appendix</div>
+      <h2 class="section-title">Site-by-site reference</h2>
+      <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.88rem;">30 of 31 sites. AmazonMate.com.au was unreachable — noted, 30/31 coverage adequate for analysis.</p>
+      <div class="table-wrap">
+        <table class="appendix-table">
+          <thead>
+            <tr><th>Agency</th><th>Location</th><th>Type</th><th>Key POD</th><th>Best copy piece</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>RocketAMS</strong></td><td>AU-wide</td><td>Full service</td><td>Ex-Amazon team, $200M managed</td><td>"Most clients see results in 30 days"</td></tr>
+            <tr><td><strong>Unmaze</strong></td><td>AU-wide</td><td>Full service</td><td>Launched Amazon AU advertising</td><td>"No empty promises or BS"</td></tr>
+            <tr><td><strong>Simple Sellers</strong></td><td>AU-wide</td><td>Full service</td><td>Ex-Amazonians, 500+ brands</td><td>"Wherever you're at, we'll help you take the next step"</td></tr>
+            <tr><td><strong>One Egg Digital</strong></td><td>Sydney</td><td>Full service</td><td>4yr+ avg client tenure, no lock-in</td><td>"Revenue driven approach"</td></tr>
+            <tr><td><strong>20twenty</strong></td><td>Melbourne</td><td>Full service</td><td>50+ ANZ marketplaces</td><td>"Takes the frustrations out of selling"</td></tr>
+            <tr><td><strong>Machete Systems</strong></td><td>Melbourne</td><td>Full service</td><td>40+ yrs combined exp</td><td>"Guiding you through the Amazon jungle"</td></tr>
+            <tr><td><strong>LION Digital</strong></td><td>Melbourne</td><td>Multi-channel</td><td>Channel directors, LION VIEW dashboard</td><td>"Take the LION's share of the market"</td></tr>
+            <tr><td><strong>eStore Factory</strong></td><td>AU-wide</td><td>Full service</td><td>3x SPN Award, 5000+ accounts</td><td>"$250M+ sales generated"</td></tr>
+            <tr><td><strong>SalesDuo</strong></td><td>AU-wide</td><td>Full service</td><td>85% ex-Amazon, AI BI tool</td><td>"Most agencies manage accounts. We scale businesses."</td></tr>
+            <tr><td><strong>Sequence Commerce</strong></td><td>AU-wide</td><td>Full service</td><td>Global, 8 Clutch Awards</td><td>"Commerce moves fast, Sequence moves faster"</td></tr>
+            <tr><td><strong>Deep Media</strong></td><td>AU-wide</td><td>Ads-focused</td><td>Prime Video + DSP specialist</td><td>"Amazon Ads. Made Simple."</td></tr>
+            <tr><td><strong>BFJ Digital</strong></td><td>Brisbane</td><td>Ads + broader</td><td>No vanity metrics, proprietary platform</td><td>"We Drive Revenue"</td></tr>
+            <tr><td><strong>Konversa</strong></td><td>Sydney</td><td>Ads-focused</td><td>No salespeople, just experts</td><td>"No salespeople. Just experts that deliver results."</td></tr>
+            <tr><td><strong>Emote Digital</strong></td><td>Melbourne</td><td>Broader digital</td><td>20+ yrs, 3000+ projects</td><td>"Strategy-led, measurable growth"</td></tr>
+            <tr><td><strong>Merge Marketing</strong></td><td>Brisbane</td><td>Ads-focused</td><td>9.96% conversion rate</td><td>"Highest-intent traffic in digital advertising"</td></tr>
+            <tr><td><strong>First Page</strong></td><td>AU-wide</td><td>SEO-focused</td><td>1,700+ clients</td><td>"Become a power seller" (generic)</td></tr>
+            <tr><td><strong>Choose Digital</strong></td><td>Sydney</td><td>Full service</td><td>Phased, de-risked expansion</td><td>"Controlled, de-risked market expansion"</td></tr>
+            <tr><td><strong>Krolog</strong></td><td>Melbourne</td><td>Full service</td><td>600+ brands, 9+ yrs</td><td>"Your products are awesome, but not selling fast?"</td></tr>
+            <tr><td><strong>Impressive</strong></td><td>Melbourne</td><td>Ads-focused</td><td>B Corp, 130+ reviews, 4.8 stars</td><td>"Google and Meta generate awareness. Amazon closes the sale."</td></tr>
+            <tr><td><strong>Australian Digital</strong></td><td>AU-wide</td><td>Ads-focused</td><td>Founders do the work directly</td><td>"Advertising on Amazon is easy. Doing it well is different."</td></tr>
+            <tr><td><strong>AMZDudes</strong></td><td>AU-wide</td><td>Full service</td><td>AMC capability, $50M+ revenue scaled</td><td>"Turn Amazon complexity into predictable growth"</td></tr>
+            <tr><td><strong>Digital Crew</strong></td><td>AU-wide</td><td>Multi-channel</td><td>Chinese/Japanese digital specialist</td><td>"Think Bigger. Think Global"</td></tr>
+            <tr><td><strong>Nimbull Digital</strong></td><td>Sydney</td><td>Ads-focused</td><td>2-hour response guarantee</td><td>"Put distance between you and your competition"</td></tr>
+            <tr><td><strong>AmazonMate</strong></td><td>AU-wide</td><td>Full service</td><td>100% AU-owned, boutique</td><td><em>N/A — site unreachable</em></td></tr>
+            <tr><td><strong>Project E</strong></td><td>AU-wide</td><td>Full service</td><td>No fixed contracts, 100% satisfaction guarantee</td><td>"Your dedicated partner in success"</td></tr>
+            <tr><td><strong>Giant Horizons</strong></td><td>AU-wide</td><td>FBA specialist</td><td>Run their own FBA brand</td><td>"If you're not on Page 1, you're not getting seen"</td></tr>
+            <tr><td><strong>AdtoRise</strong></td><td>AU-wide</td><td>Ads-focused</td><td>Google Premier Partner x3</td><td>"No false commitments, just real dedication"</td></tr>
+            <tr><td><strong>Export Accelerator</strong></td><td>Melbourne</td><td>Launch/export</td><td>Phased approach to AU→International</td><td>"Unlock unstoppable Amazon growth"</td></tr>
+            <tr><td><strong>Innovex</strong></td><td>UAE-global</td><td>Full service</td><td>500+ brands, SPN certified</td><td>"Launch. Scale. Thrive."</td></tr>
+            <tr><td><strong>Creative Circuit</strong></td><td>AU-wide</td><td>Full service</td><td>Photography + Amazon combo</td><td>"We create growth for brands of all shapes and sizes"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Phase 3 <span>Ecom</span></div>
+    <div class="footer-links">
+      <a href="index.html">Amazon Overview</a>
+      <a href="account-setup.html">Account Setup</a>
+      <a href="listing-optimisation.html">Listings</a>
+      <a href="amazon-advertising.html">Advertising</a>
+      <a href="aplus-content.html">A+ Content</a>
+      <a href="fba-management.html">FBA</a>
+      <a href="marketplace-expansion.html">Expansion</a>
+    </div>
+    <div class="footer-copy">Internal document · 30 of 31 AU Amazon agencies · Compiled 14/05/2026 · © Phase 3 Ecom</div>
+  </div>
+</footer>
+
+<script>
+  // Highlight active TOC item on scroll
+  const sections = document.querySelectorAll('[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-80px 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
