@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage Amazon Module — Options — Phase 3 Ecom</title>
+  <meta name="description" content="Homepage module design options A, B, C for the Phase 3 Ecom Amazon/Marketplace service announcement. Internal reference document.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .option-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-light);
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .preview-frame {
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      margin-top: 20px;
+    }
+    .preview-frame.recommended {
+      border-color: var(--accent);
+    }
+    .preview-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent-light);
+      margin-bottom: 8px;
+    }
+    .module-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      border: 1px solid var(--border-light);
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .module-new-tag {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+    .option-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .option-meta span { display: flex; align-items: center; gap: 6px; }
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .service-tile {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .service-tile h4 { font-size: 0.9rem; margin-bottom: 6px; }
+    .service-tile p { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
+    .service-tile.highlight { border-color: var(--accent-border); background: var(--accent-dim); }
+    .logo-strip {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 16px 0;
+    }
+    .logo-chip {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .logo-chip.active { color: var(--text-primary); border-color: var(--accent-border); background: var(--accent-dim); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Phase 3 <span>Ecom</span></div>
+    <div class="nav-links">
+      <a href="index.html">Amazon Overview</a>
+      <a href="account-setup.html">Account Setup</a>
+      <a href="listing-optimisation.html">Listings</a>
+      <a href="amazon-advertising.html">Advertising</a>
+      <a href="aplus-content.html">A+ Content</a>
+      <a href="fba-management.html">FBA</a>
+      <a href="marketplace-expansion.html">Expansion</a>
+      <a href="https://phase3ecom.com" class="nav-cta">Apply →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section class="hero" style="padding: 60px 0 48px;">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Amazon Services</a>
+      <span>/</span>
+      <span>Homepage Module Options</span>
+    </div>
+    <div class="hero-label">Internal reference — choose one option for the live site</div>
+    <h1 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem);">Homepage Amazon Module</h1>
+    <p class="hero-sub">Three layout options for introducing the Amazon/Marketplace service on the Phase 3 Ecom homepage. Pick one to implement. Live previews rendered below.</p>
+  </div>
+</section>
+
+<!-- RECOMMENDATION SUMMARY -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">Decision guide</div>
+    <h2 class="section-title" style="margin-bottom: 20px;">When to use each option</h2>
+    <div class="card-grid">
+      <div class="card" style="border-top: 3px solid var(--accent);">
+        <div class="option-label">Option A</div>
+        <h3>Short module, integrated</h3>
+        <p>Use when the Amazon service is one of many services listed on the homepage. Sits inside the existing services section without disrupting the page flow.</p>
+      </div>
+      <div class="card" style="border-top: 3px solid var(--green);">
+        <div class="option-label" style="background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.35); color: var(--green);">Option B — Recommended for launch</div>
+        <h3>Standalone callout, promotional</h3>
+        <p>Use when you want to launch the Amazon service with a promotional push — treat it as a new offer announcement. More visual real estate, leads with price and guarantee.</p>
+      </div>
+      <div class="card">
+        <div class="option-label" style="color: var(--text-muted); background: transparent;">Option C</div>
+        <h3>Minimal tile, services grid</h3>
+        <p>Use when real estate is limited and the homepage is a high-level service index only. One tile in the existing services grid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPTION A -->
+<section class="section section-alt">
+  <div class="container">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <div class="option-label">Option A — Short module (integrated into services section)</div>
+        <h2 style="font-size: 1.5rem;">Short integrated module</h2>
+      </div>
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">Sits inside the services section. Low-friction introduction to the Amazon offer without pulling too much attention away from other services.</p>
+
+    <!-- LIVE PREVIEW -->
+    <div class="preview-frame">
+      <div class="preview-label">Live preview — Option A</div>
+      <div class="module-tag">Marketplaces</div>
+      <h3 style="font-size: 1.4rem; margin-bottom: 12px;">Your Shopify store doesn't reach every buyer.</h3>
+      <p style="max-width: 520px; color: var(--text-secondary); font-size: 0.95rem;">6 in 10 product searches start on Amazon — not Google, not your website. Those buyers won't find you unless you're there.</p>
+      <p style="max-width: 520px; color: var(--text-secondary); font-size: 0.95rem; margin-top: 8px;">We set Shopify brands up on Amazon and manage the channel alongside your existing store. Done-for-you, 30-day launch, fixed price.</p>
+      <a href="index.html" class="btn btn-secondary" style="margin-top: 20px; display: inline-flex;">See the Amazon service →</a>
+    </div>
+
+    <div class="option-meta">
+      <span>📐 Recommended placement: inside services section</span>
+      <span>🎯 Best for: homepage with multiple active services</span>
+      <span>📏 Minimal real estate</span>
+    </div>
+  </div>
+</section>
+
+<!-- OPTION B -->
+<section class="section">
+  <div class="container">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <div class="option-label" style="background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.35); color: var(--green);">Option B — Recommended for launch · Standalone callout block</div>
+        <h2 style="font-size: 1.5rem;">Standalone promotional block</h2>
+      </div>
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">More visual real estate. Leads with price and guarantee. Treats the Amazon service as a new offer announcement — good for a launch push.</p>
+
+    <!-- LIVE PREVIEW -->
+    <div class="preview-frame recommended">
+      <div class="preview-label">Live preview — Option B (Recommended)</div>
+      <div class="module-new-tag">New service</div>
+      <h3 style="font-size: 1.6rem; margin-bottom: 12px; max-width: 480px;">Done-for-you Amazon launch.<br>$1,500. 30 days. Fully managed.</h3>
+      <p style="max-width: 540px; color: var(--text-secondary); font-size: 0.95rem;">If your products aren't on Amazon, you're invisible to 8.8 million Australian Amazon shoppers. We get you live in 30 days — or your setup fee back. No exceptions.</p>
+      <p style="max-width: 540px; color: var(--text-secondary); font-size: 0.95rem; margin-top: 8px;">Built for Shopify brands who know they should be on Amazon but haven't got there yet.</p>
+      <a href="index.html" class="btn btn-primary" style="margin-top: 24px; display: inline-flex;">Apply for your launch →</a>
+
+      <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border);">
+        <p style="font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 12px;">Platforms we manage</p>
+        <div class="logo-strip">
+          <span class="logo-chip">Shopify</span>
+          <span class="logo-chip active">Amazon</span>
+          <span class="logo-chip">eBay</span>
+          <span class="logo-chip">Catch</span>
+          <span class="logo-chip">Bunnings Marketplace</span>
+          <span class="logo-chip">TheIconic</span>
+          <span class="logo-chip">Everyday Market</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="option-meta">
+      <span>📐 Recommended placement: standalone section, after services</span>
+      <span>🎯 Best for: launch announcement, promotional push</span>
+      <span>📏 Requires dedicated section block</span>
+    </div>
+  </div>
+</section>
+
+<!-- OPTION C -->
+<section class="section section-alt">
+  <div class="container">
+    <div style="margin-bottom: 8px;">
+      <div class="option-label" style="color: var(--text-muted); background: transparent; border-color: var(--border);">Option C — Minimal (within existing services grid)</div>
+      <h2 style="font-size: 1.5rem;">Minimal tile in services grid</h2>
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">Single tile in the existing services grid. Use when homepage real estate is constrained and the priority is simply having Amazon represented alongside other services.</p>
+
+    <!-- LIVE PREVIEW -->
+    <div class="preview-frame">
+      <div class="preview-label">Live preview — Option C (shown in context of a 3-column services grid)</div>
+      <div class="tile-grid">
+        <div class="service-tile">
+          <h4>Email Marketing</h4>
+          <p>Klaviyo flows and campaigns targeting 25–30% of revenue from email.</p>
+          <a href="#" style="font-size: 0.78rem; color: var(--accent-light); display: block; margin-top: 8px;">Learn more →</a>
+        </div>
+        <div class="service-tile">
+          <h4>Paid Social & Search</h4>
+          <p>Meta, Google, TikTok — ad strategy and execution across all growth channels.</p>
+          <a href="#" style="font-size: 0.78rem; color: var(--accent-light); display: block; margin-top: 8px;">Learn more →</a>
+        </div>
+        <div class="service-tile highlight">
+          <h4>Amazon & Marketplace Management</h4>
+          <p>Your Shopify store runs alongside Amazon, not instead of it. We launch, manage, and grow your marketplace presence as part of your complete ecom strategy.</p>
+          <a href="index.html" style="font-size: 0.78rem; color: var(--accent-light); display: block; margin-top: 8px;">Learn more →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="option-meta">
+      <span>📐 Placement: inside existing services grid</span>
+      <span>🎯 Best for: high-level service index homepage</span>
+      <span>📏 Zero extra real estate needed</span>
+    </div>
+  </div>
+</section>
+
+<!-- IMPLEMENTATION NOTES -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">Implementation</div>
+    <h2 class="section-title" style="margin-bottom: 20px;">Notes for dev handoff</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3 style="font-size: 1rem; margin-bottom: 8px;">Logo strip</h3>
+        <p style="font-size: 0.88rem;">The platform logo strip (already live on phase3ecom.com) already includes Amazon. Consider annotating it with "Now available as a managed service" or a tooltip to direct attention without adding a full new section.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 1rem; margin-bottom: 8px;">Link target</h3>
+        <p style="font-size: 0.88rem;">All CTAs link to /amazon (the overview page). Once the full page set is live in Shopify, this path should resolve to the Amazon overview page built from <code>page-amazon-overview.md</code>.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 1rem; margin-bottom: 8px;">Option A + logo strip</h3>
+        <p style="font-size: 0.88rem;">A viable hybrid: use Option A (short module) and annotate the existing logo strip with "Marketplace management now available" or a badge on the Amazon logo. Gets attention without a full standalone block.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Phase 3 <span>Ecom</span></div>
+    <div class="footer-links">
+      <a href="index.html">Amazon Overview</a>
+      <a href="account-setup.html">Account Setup</a>
+      <a href="listing-optimisation.html">Listings</a>
+      <a href="amazon-advertising.html">Advertising</a>
+      <a href="aplus-content.html">A+ Content</a>
+      <a href="fba-management.html">FBA</a>
+      <a href="marketplace-expansion.html">Expansion</a>
+    </div>
+    <div class="footer-copy">Internal document — Phase 3 Ecom · Draft v1 · 14/05/2026</div>
+  </div>
+</footer>
+
+</body>
+</html>
