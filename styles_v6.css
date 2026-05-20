@@ -245,6 +245,13 @@ strong { color: var(--text-primary); font-weight: 600; }
 
 .break { display: block; }
 
+.gradient-text-green {
+  background: linear-gradient(130deg, #4ade80 0%, #22c55e 40%, #a3d01d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .hero-sub {
   font-size: 1.1rem;
   line-height: 1.72;
